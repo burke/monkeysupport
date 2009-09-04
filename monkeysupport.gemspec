@@ -50,6 +50,8 @@ Gem::Specification.new do |s|
      "lib/monkeysupport.rb",
      "lib/monkeysupport/inflector.rb",
      "lib/monkeysupport/inflector.rb",
+     "lib/monkeysupport/memoizable.rb",
+     "lib/monkeysupport/util.rb",
      "monkeysupport.gemspec",
      "test/monkeysupport_test.rb",
      "test/monkeysupport_test.rb",
