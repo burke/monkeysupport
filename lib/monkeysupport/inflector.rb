@@ -57,12 +57,6 @@ module ActiveSupport
       end
     end
 
-    def waste_time
-      sleep 5
-      return 42
-    end
-    memoize :waste_time
-    
   end
 end
 
