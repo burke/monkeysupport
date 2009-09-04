@@ -5,11 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "monkeysupport"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Monkeypatching Rails with C since 2009}
+    gem.description = %Q{MonkeySupport provides C implementations for some of the more intensive string manipulation methods in activesupport. ActionView is up next.}
     gem.email = "burke@burkelibbey.org"
     gem.homepage = "http://github.com/burke/monkeysupport"
     gem.authors = ["Burke Libbey"]
+    gem.files.include '{test,lib,ext}/**/*'
+    gem.extensions = ["ext/extconf.rb"]
     gem.add_development_dependency "thoughtbot-shoulda"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
