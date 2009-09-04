@@ -11,7 +11,7 @@ begin
     gem.homepage = "http://github.com/burke/monkeysupport"
     gem.authors = ["Burke Libbey"]
     gem.files.include '{test,lib,ext}/**/*'
-    gem.extensions = ["ext/extconf.rb"]
+    gem.extensions = ["ext/monkeysupport_c/extconf.rb"]
     gem.add_development_dependency "thoughtbot-shoulda"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

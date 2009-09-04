@@ -1,5 +1,7 @@
 require 'monkeysupport_c'
 
 require 'monkeysupport/type_checks'
+require 'monkeysupport/c_proxy'
 require 'monkeysupport/memoizable'
-require 'monkeysupport/inflector'
+
+require 'monkeysupport/activesupport/inflector'

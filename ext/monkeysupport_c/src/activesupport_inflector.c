@@ -4,12 +4,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "inflector.h"
+#include "activesupport_inflector.h"
 #include "ruby.h"
 
-VALUE inflector_underscore(VALUE self, VALUE rstr)
+VALUE activesupport_inflector_underscore(VALUE self, VALUE rstr)
 {
-  Check_Type(rstr, T_STRING);
+  // This is handled in the calling code. Every bit counts...
+  // Check_Type(rstr, T_STRING);
 
   VALUE  ret  = rb_str_new("", 0);
   char * ip   = StringValuePtr(rstr);
@@ -41,10 +42,11 @@ VALUE inflector_underscore(VALUE self, VALUE rstr)
   return ret;
 }
 
-VALUE inflector_parameterize(VALUE self, VALUE str, VALUE sep)
+VALUE activesupport_inflector_parameterize(VALUE self, VALUE str, VALUE sep)
 {
-  Check_Type(str, T_STRING);
-  Check_Type(sep, T_STRING);
+  // This is handled in the calling code. Every bit counts...
+  // Check_Type(str, T_STRING);
+  // Check_Type(sep, T_STRING);
 
   VALUE  ret       = rb_str_new("", 0);
   int    sep_len   = RSTRING_LEN(sep);
@@ -79,9 +81,10 @@ VALUE inflector_parameterize(VALUE self, VALUE str, VALUE sep)
   return ret;
 }
 
-VALUE inflector_dasherize(VALUE self, VALUE str)
+VALUE activesupport_inflector_dasherize(VALUE self, VALUE str)
 {
-  Check_Type(str, T_STRING);
+  // This is handled in the calling code. Every bit counts...
+  // Check_Type(str, T_STRING);
   
   char * out = ALLOC_N(char, RSTRING_LEN(str) + 1);
   char * ip  = RSTRING_PTR(str);
@@ -100,9 +103,10 @@ VALUE inflector_dasherize(VALUE self, VALUE str)
   return rb_str_new(out, len);
 }
 
-VALUE inflector_demodulize(VALUE self, VALUE rstr)
+VALUE activesupport_inflector_demodulize(VALUE self, VALUE rstr)
 {
-  Check_Type(rstr, T_STRING);
+  // This is handled in the calling code. Every bit counts...
+  // Check_Type(rstr, T_STRING);
 
   char * str       = RSTRING_PTR(rstr);
   char * ip        = str;
@@ -123,9 +127,10 @@ VALUE inflector_demodulize(VALUE self, VALUE rstr)
   return ret;
 }
 
-VALUE inflector_camelize(VALUE self, VALUE str, VALUE first_letter_uppercase)
+VALUE activesupport_inflector_camelize(VALUE self, VALUE str, VALUE first_letter_uppercase)
 {
-  Check_Type(str, T_STRING);
+  // This is handled in the calling code. Every bit counts...
+  // Check_Type(str, T_STRING);
   
   VALUE  ret      = rb_str_new("", 0);
   bool   cap_next = RTEST(first_letter_uppercase);
@@ -154,11 +159,12 @@ VALUE inflector_camelize(VALUE self, VALUE str, VALUE first_letter_uppercase)
   return ret;
 }
 
-VALUE inflector_foreign_key(VALUE self, VALUE str, VALUE use_underscore)
+VALUE activesupport_inflector_foreign_key(VALUE self, VALUE str, VALUE use_underscore)
 {
-  Check_Type(str, T_STRING);
+  // This is handled in the calling code. Every bit counts...
+  // Check_Type(str, T_STRING);
 
-  VALUE ret = inflector_underscore(self, inflector_demodulize(self, str));
+  VALUE ret = activesupport_inflector_underscore(self, activesupport_inflector_demodulize(self, str));
 
   if (RTEST(use_underscore)) {
     rb_str_cat(ret, "_id", 3);
@@ -195,9 +201,10 @@ static char * itoa(int n)
   return ret;
 }
 
-VALUE inflector_ordinalize(VALUE self, VALUE rn)
+VALUE activesupport_inflector_ordinalize(VALUE self, VALUE rn)
 {
-  Check_Type(rn, T_FIXNUM);
+  // This is handled in the calling code. Every bit counts...
+  // Check_Type(rn, T_FIXNUM);
   
   int   n   = FIX2INT(rn);
   VALUE ret = rb_str_new2(itoa(n));

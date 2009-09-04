@@ -5,14 +5,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{monkeysupport}
-  s.version = "0.0.5"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Burke Libbey"]
   s.date = %q{2009-09-04}
   s.description = %q{MonkeySupport provides C implementations for some of the more intensive string manipulation methods in activesupport. ActionView is up next.}
   s.email = %q{burke@burkelibbey.org}
-  s.extensions = ["ext/extconf.rb"]
+  s.extensions = ["ext/monkeysupport_c/extconf.rb"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -24,30 +24,14 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "ext/core_ext/string/access.c",
-     "ext/core_ext/string/access.c",
-     "ext/core_ext/string/access.h",
-     "ext/core_ext/string/access.h",
-     "ext/core_ext/string/filters.c",
-     "ext/core_ext/string/filters.c",
-     "ext/core_ext/string/filters.h",
-     "ext/core_ext/string/filters.h",
-     "ext/core_ext/string/starts_ends_with.c",
-     "ext/core_ext/string/starts_ends_with.c",
-     "ext/core_ext/string/starts_ends_with.h",
-     "ext/core_ext/string/starts_ends_with.h",
-     "ext/extconf.rb",
-     "ext/extconf.rb",
-     "ext/inflector.c",
-     "ext/inflector.c",
-     "ext/inflector.h",
-     "ext/inflector.h",
-     "ext/monkeysupport_c.c",
-     "ext/monkeysupport_c.c",
+     "ext/monkeysupport_c/extconf.rb",
+     "ext/monkeysupport_c/src/activesupport_inflector.c",
+     "ext/monkeysupport_c/src/activesupport_inflector.h",
+     "ext/monkeysupport_c/src/monkeysupport_c.c",
      "lib/monkeysupport.rb",
      "lib/monkeysupport.rb",
-     "lib/monkeysupport/inflector.rb",
-     "lib/monkeysupport/inflector.rb",
+     "lib/monkeysupport/activesupport/inflector.rb",
+     "lib/monkeysupport/c_proxy.rb",
      "lib/monkeysupport/memoizable.rb",
      "lib/monkeysupport/memoizable.rb",
      "lib/monkeysupport/type_checks.rb",

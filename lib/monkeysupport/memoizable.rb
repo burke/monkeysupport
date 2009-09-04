@@ -1,9 +1,10 @@
 module MonkeySupport
   module Memoizable
-    # This is faster than AS::Memoizeable
+    # This is faster than AS::Memoizeable.
+    # Less featureful, however.
     def monkey_memoize(*methods)
       methods.each do |method|
-        class_eval( <<"END"
+        class_eval <<EOS
 
 @__#{method} = {}
 alias_method :__#{method}, :#{method}
@@ -22,8 +23,7 @@ else
   
 end
 
-END
-)
+EOS
   
       end
     end
