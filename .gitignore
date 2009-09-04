@@ -3,3 +3,7 @@
 coverage
 rdoc
 pkg
+*.bundle
+*.so
+*.dll
+*.o

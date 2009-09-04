@@ -61,7 +61,7 @@ module ActiveSupport
       if x.class == Fixnum
         return ActiveSupport::ASC.inflector_ordinalize(number.to_i)
       else
-        return _ruby_ordinalize(number)
+        return __ordinalize(number)
       end
     end
 
