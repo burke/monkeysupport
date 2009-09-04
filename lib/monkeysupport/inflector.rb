@@ -1,8 +1,8 @@
 module ActiveSupport
   module Inflector
-    extend ::ActiveSupport::Memoizable
+    # extend ::ActiveSupport::Memoizable
 
-    memoize :pluralize, :singularize, :humanize
+    # memoize :pluralize, :singularize, :humanize
     
     alias_method :ruby_camelize, :camelize
 
