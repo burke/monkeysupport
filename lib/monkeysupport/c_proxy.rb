@@ -16,35 +16,24 @@ module MonkeySupport
     # 
     # alias_method :__demodulize, :demodulize
     # def demodulize(arg0)
-    #   if ((MonkeySupport::TypeChecks.valid_string?(arg0)))
+    #   begin
     #     MonkeySupport::C.activesupport_inflector_demodulize(arg0)
-    #   else
+    #   rescue TypeError
     #     __demodulize(arg0)
     #   end
     # end
     def monkey_c_proxy(ruby_name, c_name, args)
-      checklist                = Util::checklist(args)
       arglist_with_defaults    = Util::arglist(args, true)
       arglist_without_defaults = Util::arglist(args, false)
 
-      if checklist
-        body = <<-EOS
-          if #{checklist}
-            MonkeySupport::C.#{c_name}(#{arglist_without_defaults})
-          else
-            __#{ruby_name}(#{arglist_without_defaults})
-          end
-        EOS
-      else
-        body = <<-EOS
-          MonkeySupport::C.#{c_name}(#{arglist_without_defaults})
-        EOS
-      end
-          
       function = <<-EOS
         alias_method :__#{ruby_name}, :#{ruby_name}
         def #{ruby_name}(#{arglist_with_defaults})
-          #{body}
+          begin
+            MonkeySupport::C.#{c_name}(#{arglist_without_defaults})
+          rescue TypeError
+            __#{ruby_name}(#{arglist_without_defaults})
+          end
         end
       EOS
 
@@ -52,17 +41,6 @@ module MonkeySupport
     end
 
     module Util
-      def self.checklist(args)
-        checklist = []
-        args.each_with_index do |x, i|
-          arg = ((x.class == Array) ? x[0] : x) # support [:bool, true] notation.
-          if [:string, :fixnum].include?(arg)
-            checklist << "(MonkeySupport::TypeChecks.valid_#{arg}?(arg#{i}))"
-          end
-        end
-        return (checklist.empty? ? nil : "(#{checklist.join(' && ')})")
-      end
-      
       def self.arglist(args, include_defaults)
         arglist = []
         args.each_with_index do |arg, i|

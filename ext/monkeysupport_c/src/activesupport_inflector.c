@@ -9,8 +9,7 @@
 
 VALUE activesupport_inflector_underscore(VALUE self, VALUE rstr)
 {
-  // This is handled in the calling code. Every bit counts...
-  // Check_Type(rstr, T_STRING);
+  Check_Type(rstr, T_STRING);
 
   VALUE  ret  = rb_str_new("", 0);
   char * ip   = StringValuePtr(rstr);
@@ -44,9 +43,8 @@ VALUE activesupport_inflector_underscore(VALUE self, VALUE rstr)
 
 VALUE activesupport_inflector_parameterize(VALUE self, VALUE str, VALUE sep)
 {
-  // This is handled in the calling code. Every bit counts...
-  // Check_Type(str, T_STRING);
-  // Check_Type(sep, T_STRING);
+  Check_Type(str, T_STRING);
+  Check_Type(sep, T_STRING);
 
   VALUE  ret       = rb_str_new("", 0);
   int    sep_len   = RSTRING_LEN(sep);
@@ -83,8 +81,7 @@ VALUE activesupport_inflector_parameterize(VALUE self, VALUE str, VALUE sep)
 
 VALUE activesupport_inflector_dasherize(VALUE self, VALUE str)
 {
-  // This is handled in the calling code. Every bit counts...
-  // Check_Type(str, T_STRING);
+  Check_Type(str, T_STRING);
   
   char * out = ALLOC_N(char, RSTRING_LEN(str) + 1);
   char * ip  = RSTRING_PTR(str);
@@ -105,8 +102,7 @@ VALUE activesupport_inflector_dasherize(VALUE self, VALUE str)
 
 VALUE activesupport_inflector_demodulize(VALUE self, VALUE rstr)
 {
-  // This is handled in the calling code. Every bit counts...
-  // Check_Type(rstr, T_STRING);
+  Check_Type(rstr, T_STRING);
 
   char * str       = RSTRING_PTR(rstr);
   char * ip        = str;
@@ -129,8 +125,7 @@ VALUE activesupport_inflector_demodulize(VALUE self, VALUE rstr)
 
 VALUE activesupport_inflector_camelize(VALUE self, VALUE str, VALUE first_letter_uppercase)
 {
-  // This is handled in the calling code. Every bit counts...
-  // Check_Type(str, T_STRING);
+  Check_Type(str, T_STRING);
   
   VALUE  ret      = rb_str_new("", 0);
   bool   cap_next = RTEST(first_letter_uppercase);
@@ -161,8 +156,7 @@ VALUE activesupport_inflector_camelize(VALUE self, VALUE str, VALUE first_letter
 
 VALUE activesupport_inflector_foreign_key(VALUE self, VALUE str, VALUE use_underscore)
 {
-  // This is handled in the calling code. Every bit counts...
-  // Check_Type(str, T_STRING);
+  Check_Type(str, T_STRING);
 
   VALUE ret = activesupport_inflector_underscore(self, activesupport_inflector_demodulize(self, str));
 
@@ -203,8 +197,7 @@ static char * itoa(int n)
 
 VALUE activesupport_inflector_ordinalize(VALUE self, VALUE rn)
 {
-  // This is handled in the calling code. Every bit counts...
-  // Check_Type(rn, T_FIXNUM);
+  Check_Type(rn, T_FIXNUM);
   
   int   n   = FIX2INT(rn);
   VALUE ret = rb_str_new2(itoa(n));

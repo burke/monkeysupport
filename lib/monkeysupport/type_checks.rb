@@ -1,10 +1,12 @@
 module MonkeySupport
   module TypeChecks
 
+    # Disclaimer: I may have been writing too much lisp lately.
+    
     # NOTE: This exists, but it'll still be a lot faster to just call
     # obj.class == Fixnum in the calling code, rather than resolving
     # MonkeySupport::TypeChecks.is_fixnum? each time.
-    def self.valid_fixnum?(obj)
+    def self.valid_fixnum?(obj, string=false)
       obj.class == Fixnum
     end
 
@@ -19,17 +21,17 @@ module MonkeySupport
     if '1.9'.respond_to?(:force_encoding)
       ASCII_ENCODING = Encoding.find("ASCII-8BIT")
       if Encoding.default_external == ASCII_ENCODING
-        def self.valid_string?(obj)
+        def self.valid_string?(obj, string=false)
           (obj.class == String) && obj.encoding == ASCII_ENCODING
         end
       else
-        def self.valid_string?(obj)
+        def self.valid_string?(obj, string=false)
           #TODO: Check ascii_only? and force_encoding here.
           (obj.class == String) && obj.encoding == ASCII_ENCODING
         end
       end
     else # <1.9
-      def self.valid_string?(obj)
+      def self.valid_string?(obj, string=false)
         obj.class == String
       end
     end
