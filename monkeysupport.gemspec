@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{monkeysupport}
-  s.version = "0.0.6"
+  s.version = "0.0.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Burke Libbey"]
@@ -25,12 +25,18 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "ext/monkeysupport_c/extconf.rb",
+     "ext/monkeysupport_c/extconf.rb",
+     "ext/monkeysupport_c/src/activesupport_inflector.c",
      "ext/monkeysupport_c/src/activesupport_inflector.c",
      "ext/monkeysupport_c/src/activesupport_inflector.h",
+     "ext/monkeysupport_c/src/activesupport_inflector.h",
+     "ext/monkeysupport_c/src/monkeysupport_c.c",
      "ext/monkeysupport_c/src/monkeysupport_c.c",
      "lib/monkeysupport.rb",
      "lib/monkeysupport.rb",
      "lib/monkeysupport/activesupport/inflector.rb",
+     "lib/monkeysupport/activesupport/inflector.rb",
+     "lib/monkeysupport/c_proxy.rb",
      "lib/monkeysupport/c_proxy.rb",
      "lib/monkeysupport/memoizable.rb",
      "lib/monkeysupport/memoizable.rb",
