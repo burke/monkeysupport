@@ -1,9 +1,7 @@
 module MonkeySupport
   module Memoizable
     # This is faster than AS::Memoizeable
-    # TODO: Move this into a util class of some sort. Same with check methods above.
     def monkey_memoize(*methods)
-      methods = [methods] if methods.class == Symbol
       methods.each do |method|
         class_eval( <<"END"
 
