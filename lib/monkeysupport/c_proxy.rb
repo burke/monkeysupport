@@ -26,11 +26,14 @@ module MonkeySupport
       arglist_with_defaults    = Util::arglist(args, true)
       arglist_without_defaults = Util::arglist(args, false)
 
+      # Note: About MS_C: That little extra lookup to MonkeySupport::C
+      # can be a near-15% performance hit on some functions. Brutal.
       function = <<-EOS
         alias_method :__unproxy_#{ruby_name}, :#{ruby_name}
+        MS_C = MonkeySupport::C unless defined? MS_C
         def #{ruby_name}(#{arglist_with_defaults})
           begin
-            MonkeySupport::C.#{c_name}(#{arglist_without_defaults})
+            MS_C.#{c_name}(#{arglist_without_defaults})
           rescue TypeError
             __unproxy_#{ruby_name}(#{arglist_without_defaults})
           end
