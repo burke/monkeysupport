@@ -6,19 +6,19 @@ module MonkeySupport
       methods.each do |method|
         class_eval <<EOS
 
-@__#{method} = {}
-alias_method :__#{method}, :#{method}
+@__memo_#{method} = {}
+alias_method :__unmemo_#{method}, :#{method}
 
 if method(:#{method}).arity == 1
           
   def #{method}(arg)
-    @__#{method}[arg] ||= __#{method}(arg)
+    @__memo_#{method}[arg] ||= __unmemo_#{method}(arg)
   end
   
 else
   
   def #{method}(*args)
-    @__#{method}[args] ||= __#{method}(*args)
+    @__memo_#{method}[args] ||= __unmemo_#{method}(*args)
   end
   
 end

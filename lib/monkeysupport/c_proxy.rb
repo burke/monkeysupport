@@ -27,12 +27,12 @@ module MonkeySupport
       arglist_without_defaults = Util::arglist(args, false)
 
       function = <<-EOS
-        alias_method :__#{ruby_name}, :#{ruby_name}
+        alias_method :__unproxy_#{ruby_name}, :#{ruby_name}
         def #{ruby_name}(#{arglist_with_defaults})
           begin
             MonkeySupport::C.#{c_name}(#{arglist_without_defaults})
           rescue TypeError
-            __#{ruby_name}(#{arglist_without_defaults})
+            __unproxy_#{ruby_name}(#{arglist_without_defaults})
           end
         end
       EOS
