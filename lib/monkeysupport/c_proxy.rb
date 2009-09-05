@@ -37,7 +37,6 @@ module MonkeySupport
         end
       EOS
 
-      puts function
       class_eval(function)
     end
 
