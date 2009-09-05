@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{monkeysupport}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Burke Libbey"]
@@ -40,8 +40,6 @@ Gem::Specification.new do |s|
      "lib/monkeysupport/c_proxy.rb",
      "lib/monkeysupport/memoizable.rb",
      "lib/monkeysupport/memoizable.rb",
-     "lib/monkeysupport/type_checks.rb",
-     "lib/monkeysupport/type_checks.rb",
      "monkeysupport.gemspec",
      "test/monkeysupport_test.rb",
      "test/monkeysupport_test.rb",
