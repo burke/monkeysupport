@@ -7,7 +7,10 @@
 #include "activesupport_inflector.h"
 #include "ruby.h"
 
-//rb_raise(rb_eTypeError, "Non-ASCII String");
+//TODO: Deal with string encodings in 1.9.
+// if (do_magic_here) {
+//   rb_raise(rb_eTypeError, "Non-ASCII String");
+// }
 
 VALUE activesupport_inflector_underscore(VALUE self, VALUE rstr)
 {
@@ -61,7 +64,6 @@ VALUE activesupport_inflector_parameterize(VALUE self, VALUE str, VALUE sep)
   bool   separated = true;
   int    i;
   char   tmp;
-
 
   for (i = 0; i < ilen; i++, ip++) {
     if (isalnum(*ip) || *ip == '-' || *ip == '_' || *ip == '+') { // normal char
