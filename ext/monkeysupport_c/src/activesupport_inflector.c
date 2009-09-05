@@ -7,6 +7,8 @@
 #include "activesupport_inflector.h"
 #include "ruby.h"
 
+//rb_raise(rb_eTypeError, "Non-ASCII String");
+
 VALUE activesupport_inflector_underscore(VALUE self, VALUE rstr)
 {
   Check_Type(rstr, T_STRING);
@@ -45,15 +47,22 @@ VALUE activesupport_inflector_parameterize(VALUE self, VALUE str, VALUE sep)
 {
   Check_Type(str, T_STRING);
   Check_Type(sep, T_STRING);
+  
+  VALUE mActiveSupport = rb_define_module("ActiveSupport");
+  VALUE mInflector     = rb_define_module_under(mActiveSupport, "Inflector");
+  VALUE transliterated = rb_funcall(mInflector, rb_intern("transliterate"), 1, str);
+
+  Check_Type(transliterated, T_STRING); // You never know...
 
   VALUE  ret       = rb_str_new("", 0);
   int    sep_len   = RSTRING_LEN(sep);
-  int    ilen      = RSTRING_LEN(str);
-  char * ip        = RSTRING_PTR(str);
+  int    ilen      = RSTRING_LEN(transliterated);
+  char * ip        = RSTRING_PTR(transliterated);
   bool   separated = true;
   int    i;
   char   tmp;
-  
+
+
   for (i = 0; i < ilen; i++, ip++) {
     if (isalnum(*ip) || *ip == '-' || *ip == '_' || *ip == '+') { // normal char
       separated = false;

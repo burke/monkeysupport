@@ -37,6 +37,7 @@ module MonkeySupport
         end
       EOS
 
+      puts function
       class_eval(function)
     end
 
@@ -45,7 +46,7 @@ module MonkeySupport
         arglist = []
         args.each_with_index do |arg, i|
           if (arg.class == Array && include_defaults)
-            arglist << "arg#{i} = #{arg[1]}"
+            arglist << "arg#{i} = #{arg[1].inspect}"
           else
             arglist << "arg#{i}"
           end

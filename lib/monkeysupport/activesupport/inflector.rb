@@ -28,40 +28,15 @@ module ActiveSupport
                    :activesupport_inflector_demodulize,
                    [:string]) # class_name_in_module
 
-=begin
+    monkey_c_proxy(:ordinalize,
+                   :activesupport_inflector_ordinalize,
+                   [:fixnum]) # number
+    
     # TODO: Transliterate
     monkey_c_proxy(:parameterize,
                    :activesupport_inflector_parameterize,
                    [:string,         # string
                     [:string, '-']]) # separator
-
-    # TODO: .to_i
-    monkey_c_proxy(:ordinalize,
-                   :activesupport_inflector_ordinalize,
-                   [:fixnum]) # number
-=end
-    
-    alias_method :__parameterize, :parameterize
-    def parameterize(string, sep = '-')
-      parameterized_string = transliterate(string)
-      if (MonkeySupport::TypeChecks.is_ascii_string?(parameterized_string) \
-          && MonkeySupport::TypeChecks.is_ascii_string?(sep))
-        
-        MonkeySupport::C.activesupport_inflector_parameterize(parameterized_string.to_s, sep)
-      else
-        __parameterize(string, sep)
-      end
-    end
-    
-    alias_method :__ordinalize, :ordinalize
-    def ordinalize(number)
-      x = number.to_i
-      if (x.class == Fixnum)
-        MonkeySupport::C.activesupport_inflector_ordinalize(x)
-      else 
-        __ordinalize(number)
-      end
-    end
 
   end
 end
