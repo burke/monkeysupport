@@ -32,7 +32,6 @@ module ActiveSupport
                    :activesupport_inflector_ordinalize,
                    [:fixnum]) # number
     
-    # TODO: Transliterate
     monkey_c_proxy(:parameterize,
                    :activesupport_inflector_parameterize,
                    [:string,         # string
