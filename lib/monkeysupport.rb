@@ -3,11 +3,13 @@ require 'monkeysupport/memoizable'
 
 require 'monkeysupport_c'
 
-unless $MonkeyModuleExcludes && $MonkeyModuleExcludes.include? "inflector"
+excluded = $MonkeyModuleExcludes || []
+
+unless excluded.include? "inflector"
   require 'monkeysupport/activesupport/inflector'
 end
   
-unless $MonkeyModuleExcludes && $MonkeyModuleExcludes.include? "output_safety"
+unless excluded.include? "output_safety"
   if ["1.8.7", "1.9.1"].include? RUBY_VERSION
     require 'output_safety_ext'
   else
