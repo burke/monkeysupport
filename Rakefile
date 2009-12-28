@@ -5,15 +5,14 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "monkeysupport"
-    gem.summary = %Q{Monkeypatching Rails with C since 2009}
-    gem.description = %Q{MonkeySupport provides C implementations for some of the more intensive string manipulation methods in activesupport. ActionView is up next.}
+    gem.summary = "Monkeypatching Rails with C since 2009"
+    gem.description = "MonkeySupport provides C implementations for some of the more intensive string manipulation methods in activesupport."
     gem.email = "burke@burkelibbey.org"
     gem.homepage = "http://github.com/burke/monkeysupport"
     gem.authors = ["Burke Libbey"]
     gem.files.include '{test,lib,ext}/**/*'
-    gem.extensions = ["ext/monkeysupport_c/extconf.rb"]
-    gem.add_development_dependency "thoughtbot-shoulda"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.extensions = ["ext/monkeysupport_c/extconf.rb", "ext/output_safety_ext/extconf.rb"]
+    gem.add_development_dependency "shoulda"
   end
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"

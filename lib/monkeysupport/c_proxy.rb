@@ -14,12 +14,13 @@ module MonkeySupport
     # 
     # EXAMPLE:
     # 
-    # alias_method :__demodulize, :demodulize
+    # alias_method :__unproxy_demodulize, :demodulize
+    # MS_C = MonkeySupport::C unless defined? MS_C
     # def demodulize(arg0)
     #   begin
-    #     MonkeySupport::C.activesupport_inflector_demodulize(arg0)
+    #     MS_C.activesupport_inflector_demodulize(arg0)
     #   rescue TypeError
-    #     __demodulize(arg0)
+    #     __unproxy_demodulize(arg0)
     #   end
     # end
     def monkey_c_proxy(ruby_name, c_name, args)

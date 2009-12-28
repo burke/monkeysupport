@@ -1,6 +1,11 @@
-= monkeysupport
+= MonkeySupport
 
-Description goes here.
+MonkeySupport is a collection of monkeypatches to Rails, replacing
+existing methods with (somewhat) optimized C equivalents.
+
+If this interests you, you should also check out methodmissing's
+excellent HashWithIndifferentAccess at
+http://github.com/methodmissing/hwia .
 
 == Note on Patches/Pull Requests
  
@@ -12,6 +17,17 @@ Description goes here.
   (if you want to have your own version, that is fine but
    bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
+
+== Problems / TODO
+
+* I haven't figured out a simple way to get this running with the
+  rails test suite. That would be handy.
+* Certain functions are memoized now, that rails doesn't memoize by
+  default. I've tried to choose carefully, but with unusual usage
+  patterns, this could cause memory issues. Simplest solution that
+  comes to my mind would be to use a simple LRU cache instead of a
+  plain hash.
+* There's always more to port...
 
 == Copyright
 
