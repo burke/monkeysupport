@@ -1,4 +1,4 @@
-= MonkeySupport
+#MonkeySupport#
 
 MonkeySupport is a collection of monkeypatches to Rails, replacing
 existing methods with (somewhat) optimized C equivalents.
@@ -7,7 +7,22 @@ If this interests you, you should also check out methodmissing's
 excellent HashWithIndifferentAccess at
 http://github.com/methodmissing/hwia .
 
-== Note on Patches/Pull Requests
+##Modules##
+
+MonkeySupport is largely a bunch of modules, each overwriting a part
+of ActiveSupport. By setting `$MonkeyModuleExcludes` to an array of
+module names before loading MonkeySupport, those modules will not be
+loaded. For example:
+
+    $MonkeyModuleExcludes = ["inflector", "output_safety"]
+    require 'monkeysupport'
+
+MonkeySupport is currently comprised of the following modules:
+
+* inflector
+* output_safety
+
+##Note on Patches/Pull Requests##
  
 * Fork the project.
 * Make your feature addition or bug fix.
@@ -18,7 +33,7 @@ http://github.com/methodmissing/hwia .
    bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
-== Problems / TODO
+##Problems / TODO##
 
 * I haven't figured out a simple way to get this running with the
   rails test suite. That would be handy.
@@ -29,6 +44,6 @@ http://github.com/methodmissing/hwia .
   plain hash.
 * There's always more to port...
 
-== Copyright
+##Copyright##
 
-Copyright (c) 2009 Burke Libbey. See LICENSE for details.
+Copyright (c) 2009 Burke Libbey. MIT License. See LICENSE for details.
