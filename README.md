@@ -17,6 +17,10 @@ loaded. For example:
     $MonkeyModuleExcludes = ["inflector", "output_safety"]
     require 'monkeysupport'
 
+You can also specify a whitelist of modules to load with
+`$MonkeyModuleIncludes`, if you'd like. Typically, leaving both these
+variables undefined is what you'll want, though.
+
 MonkeySupport is currently comprised of the following modules:
 
 * inflector
