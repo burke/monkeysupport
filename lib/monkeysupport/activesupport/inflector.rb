@@ -3,8 +3,9 @@ module ActiveSupport
 
     extend MonkeySupport::Memoizable
     extend MonkeySupport::CProxy
-    
-    monkey_memoize :pluralize, :singularize, :humanize
+
+    # This breaks a test case in rails now :(
+    # monkey_memoize :pluralize, :singularize, :humanize
 
     monkey_c_proxy(:camelize,
                    :activesupport_inflector_camelize,

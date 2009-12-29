@@ -1,13 +1,12 @@
-#include "stdbool.h"
-
 #include "ruby.h"
-#include "ruby/version.h"
 
 // Use a FL_USER flag for storing html safety information.
 // fingers crossed here, this is black black magic.
-#ifdef FL_USER4
+//#ifdef FL_USER4
 
-#define HFLAG FL_USER4
+/*
+
+//#define HFLAG FL_USER4
 
 // by default, objects are not safe for html.
 VALUE obj_html_safe_qmark(VALUE self) { return Qfalse; }
@@ -71,19 +70,22 @@ str_concat(VALUE self, VALUE other)
   return self;
 }
 
-void
-Init_output_safety_ext()
-{
-  rb_define_method(rb_cObject, "html_safe?",       obj_html_safe_qmark, 0);
-  rb_define_method(rb_cFixnum, "html_safe?",       fix_html_safe_qmark, 0);
-  
-  rb_define_method(rb_cString, "html_safe",        str_html_safe,       0);
-  rb_define_method(rb_cString, "html_safe!",       str_html_safe_bang,  0);
-  rb_define_method(rb_cString, "html_safe?",       str_html_safe_qmark, 0);
-  rb_define_method(rb_cString, "_rails_html_safe", str_html_safe_qmark, 0);
+*/
 
-  rb_define_method(rb_cString, "+",                 str_plus,           1);
-  rb_define_method(rb_cString, "<<",                str_concat,         1);
+void
+Init_monkeysupport_output_safety()
+{
+  
+/*   rb_define_method(rb_cObject, "html_safe?",       obj_html_safe_qmark, 0); */
+/*   rb_define_method(rb_cFixnum, "html_safe?",       fix_html_safe_qmark, 0); */
+  
+/*   rb_define_method(rb_cString, "html_safe",        str_html_safe,       0); */
+/*   rb_define_method(rb_cString, "html_safe!",       str_html_safe_bang,  0); */
+/*   rb_define_method(rb_cString, "html_safe?",       str_html_safe_qmark, 0); */
+/*   rb_define_method(rb_cString, "_rails_html_safe", str_html_safe_qmark, 0); */
+
+/*   rb_define_method(rb_cString, "+",                 str_plus,           1); */
+/*   rb_define_method(rb_cString, "<<",                str_concat,         1); */
 }
 
-#endif
+//#endif

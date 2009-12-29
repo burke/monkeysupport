@@ -5,42 +5,41 @@
 
 Gem::Specification.new do |s|
   s.name = %q{monkeysupport}
-  s.version = "0.1.2"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Burke Libbey"]
   s.date = %q{2009-12-28}
-  s.description = %q{MonkeySupport provides C implementations for some of the more intensive string manipulation methods in activesupport.}
+  s.description = %q{MonkeySupport monkeypatches some of the performance-sink parts of rails with speedy C extensions.}
   s.email = %q{burke@burkelibbey.org}
-  s.extensions = ["ext/monkeysupport_c/extconf.rb", "ext/output_safety_ext/extconf.rb"]
+  s.extensions = ["ext/monkeysupport_c/extconf.rb", "ext/monkeysupport_output_safety/extconf.rb"]
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.rdoc"
+     "README.md"
   ]
   s.files = [
     ".document",
      ".gitignore",
      "LICENSE",
-     "README.rdoc",
+     "README.md",
      "Rakefile",
      "VERSION",
      "ext/monkeysupport_c/extconf.rb",
      "ext/monkeysupport_c/src/activesupport_inflector.c",
      "ext/monkeysupport_c/src/activesupport_inflector.h",
      "ext/monkeysupport_c/src/monkeysupport_c.c",
-     "ext/output_safety_ext/Makefile",
-     "ext/output_safety_ext/extconf.rb",
-     "ext/output_safety_ext/output_safety_ext.bundle",
-     "ext/output_safety_ext/output_safety_ext.c",
-     "ext/output_safety_ext/output_safety_ext.o",
+     "ext/monkeysupport_output_safety/Makefile",
+     "ext/monkeysupport_output_safety/extconf.rb",
+     "ext/monkeysupport_output_safety/monkeysupport_output_safety.c",
+     "ext/monkeysupport_output_safety/src/monkeysupport_output_safety.c",
      "lib/monkeysupport.rb",
      "lib/monkeysupport/activesupport/inflector.rb",
      "lib/monkeysupport/c_proxy.rb",
      "lib/monkeysupport/lru_cache.rb",
      "lib/monkeysupport/memoizable.rb",
      "monkeysupport.gemspec",
-     "test/monkeysupport_test.rb",
-     "test/test_helper.rb"
+     "spec/output_safety_spec.rb",
+     "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/burke/monkeysupport}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -48,8 +47,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{Monkeypatching Rails with C since 2009}
   s.test_files = [
-    "test/monkeysupport_test.rb",
-     "test/test_helper.rb"
+    "spec/output_safety_spec.rb",
+     "spec/spec_helper.rb"
   ]
 
   if s.respond_to? :specification_version then

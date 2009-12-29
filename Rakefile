@@ -11,7 +11,7 @@ begin
     gem.homepage = "http://github.com/burke/monkeysupport"
     gem.authors = ["Burke Libbey"]
     gem.files.include '{spec,lib,ext}/**/*'
-    gem.extensions = ["ext/monkeysupport_c/extconf.rb", "ext/output_safety_ext/extconf.rb"]
+    gem.extensions = ["ext/monkeysupport_c/extconf.rb", "ext/monkeysupport_output_safety/extconf.rb"]
     gem.add_development_dependency "shoulda"
   end
 rescue LoadError

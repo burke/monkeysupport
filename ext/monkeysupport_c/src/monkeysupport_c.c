@@ -8,7 +8,6 @@ Init_monkeysupport_c()
   VALUE mMonkeySupport = rb_define_module("MonkeySupport");
   VALUE cMSC = rb_define_class_under(mMonkeySupport, "C", rb_cObject);
 
-  /* ActiveSupport::ASC.camelize("my_string") */
   rb_define_singleton_method(cMSC, "activesupport_inflector_camelize",     activesupport_inflector_camelize,     2);
   rb_define_singleton_method(cMSC, "activesupport_inflector_demodulize",   activesupport_inflector_demodulize,   1);
   rb_define_singleton_method(cMSC, "activesupport_inflector_dasherize",    activesupport_inflector_dasherize,    1);

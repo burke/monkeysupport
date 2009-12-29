@@ -10,7 +10,7 @@ module_loaders = {
 
   "output_safety" => lambda{
     if ["1.8.7", "1.9.1"].include? RUBY_VERSION
-      require 'output_safety_ext'
+      require 'monkeysupport_output_safety'
     else
       puts "##MonkeySupport: output_safety module not supported by #{RUBY_VERSION}. Module not loaded."
     end

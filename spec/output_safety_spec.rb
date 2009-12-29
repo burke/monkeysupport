@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe "String" do
+describe String do
   context "newly created" do
     it "should not be html_safe" do
       "foo bar baz".html_safe?.should be_false
