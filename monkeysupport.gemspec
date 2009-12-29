@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{monkeysupport}
-  s.version = "0.2.1"
+  s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Burke Libbey"]
@@ -30,7 +30,6 @@ Gem::Specification.new do |s|
      "ext/monkeysupport_c/src/monkeysupport_c.c",
      "ext/monkeysupport_output_safety/Makefile",
      "ext/monkeysupport_output_safety/extconf.rb",
-     "ext/monkeysupport_output_safety/monkeysupport_output_safety.c",
      "ext/monkeysupport_output_safety/src/monkeysupport_output_safety.c",
      "lib/monkeysupport.rb",
      "lib/monkeysupport/activesupport/inflector.rb",
