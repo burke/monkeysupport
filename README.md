@@ -37,15 +37,20 @@ MonkeySupport is currently comprised of the following modules:
    bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
+##Testing##
+
+There are some simple specs in `./spec`. To run against the
+activesupport test suite, add `require 'monkeysupport'` below the
+activesupport requires in activesupport's `Rakefile`. and rake away.
+
 ##Problems / TODO##
 
-* I haven't figured out a simple way to get this running with the
-  rails test suite. That would be handy.
-* Certain functions are memoized now, that rails doesn't memoize by
-  default. I've tried to choose carefully, but with unusual usage
-  patterns, this could cause memory issues. Simplest solution that
-  comes to my mind would be to use a simple LRU cache instead of a
-  plain hash.
+* Certain functions used to be memoized, then rails added test cases
+  for adding new inflections on the fly. The memoization is currently
+  disabled, but could be tweaked to be invalidated when the inflection
+  rules change.
+* Need to do a better job of identifying ruby versions for
+  output_safety module.
 * There's always more to port...
 
 ##Copyright##
